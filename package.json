@@ -1,0 +1,29 @@
+{
+  "name": "crud_js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "serve": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rotyvk7/Crud_js.git"
+  },
+  "author": "Robert Azevedo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rotyvk7/Crud_js/issues"
+  },
+  "homepage": "https://github.com/rotyvk7/Crud_js#readme",
+  "dependencies": {
+    "consign": "^0.1.6",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "mongoose": "^6.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
