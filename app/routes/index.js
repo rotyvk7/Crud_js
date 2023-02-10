@@ -3,7 +3,7 @@ module.exports = (application) => {
         application.app.controllers.index.index(application, req, res)
     })
 
-    application.post('/', (req, res) => {
-        application.app.controllers.index.login(application, req, res)
+    application.post('/login', application.passport.authenticate('local', { failureRedirect: '/?fail=true' }), (req, res) => {
+        application.app.controllers.index.successLogin(application, req, res)
     })
 }

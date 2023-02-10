@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Telefones</title>
+</head>
+<body>
+    <h1>Bem vindo, <%= user.login%></h1><a href="/logout"><button>Logout</button></a>
+    <table>
+        <thead>
+            <th>Telefone</th>
+            <th>Editar</th>
+            <th>Deletar</th>
+        </thead>
+        <tbody>
+            <% user.phones.forEach( el => { %>
+            <tr>
+                <form action="/updateNumber" method="post">
+                    <input type="hidden" name="numberId" value="<%=el._id%>">
+                    <td><input type="text" name="number" value="<%=el.number %>"></td>
+                    <td><button type="submit">Atualizar</button></td>
+                </form>
+                <td><a href="/deleteNumber?numberId=<%=el._id %>">Apagar</a></td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <form action="/addNumber" method="post">
+        <input type="text" name="newNumber">
+        <button type="submit">Adicionar número</button>
+    </form>
+    <% if (errors) {%>
+        <span style="color: red;"><%=errors %></span>
+    <% } %>
+    <% if (registered) {%>
+        <span style="color: green;">Número cadastrado com sucesso!</span>
+    <% } %>
+    <% if (deleted) {%>
+        <span style="color: green;">Número deletado com sucesso!</span>
+    <% } %>
+</body>
+</html>

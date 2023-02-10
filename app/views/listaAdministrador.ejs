@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Administrador</title>
+</head>
+<body>
+    <h1>Bem vindo, <%= user.login%></h1><a href="/logout"><button>Logout</button></a>
+    <% allUsers.forEach(user => { %>
+        <div>
+            <h1><%=user.login %></h1>
+            <table>
+                <thead>
+                    <th>Número</th>
+                    <th>Ação</th>
+                </thead>
+                <tbody>
+                    <% user.phones.forEach( el => { %>
+                        <tr>
+                            <td><%=el.number %></td>
+                            <td><a href="/deleteNumberAdmin?numberId=<%=el._id %>&login=<%=user.login %>">Apagar</a></td>
+                        </tr>
+                    <% }) %>  
+                </tbody>
+            </table>
+        </div>
+    <% }) %>
+    <% if (errors) {%>
+        <span style="color: red;"><%=errors %></span>
+    <% } %>
+    <% if (registered) {%>
+        <span style="color: green;">Número cadastrado com sucesso!</span>
+    <% } %>
+    <% if (deleted) {%>
+        <span style="color: green;">Número deletado com sucesso!</span>
+    <% } %>
+</body>
+</html>
